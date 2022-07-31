@@ -1,4 +1,4 @@
-# Anteprojeto -  Mestrado de Inteligência Artigicial 
+# Anteprojeto -  Mestrado de Computação Aplicada em Inteligência Artificial 
 `Acadêmico: Bruno Kobi Valadares de Amorim`</br>
 **TEMA**: COMPARAÇÃO DE TÉCNICAS DE REDUÇÃO DE DIMENSIONALIDADE APLICADA NA DETECÇÃO DE ANOMALIAS EM POÇOS DE PETRÓLEO
 <br>
