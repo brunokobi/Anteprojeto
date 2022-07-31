@@ -1,0 +1,357 @@
+\documentclass[times,english,brazil,oneside, a4paper, fleqn]{ifes8}
+
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}           % Usado pelo exemplo de ficha catalográfica
+\usepackage[alf, abnt-thesis-year=both]{abntex2cite}
+\usepackage{microtype}          % para melhorias de justificação
+\usepackage{morefloats}         % permite mais floats
+\usepackage{listings}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary[topaths]
+\usepackage{mathtools}
+\usepackage[final]{pdfpages}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{boxhandler}
+\usepackage{longtable}
+\usepackage{placeins}
+\setlength {\marginparwidth }{2cm}
+\usepackage{todonotes}
+%\usepackage[none]{hyphenat}%não separar a silaba
+\setlength\mathindent{0pt}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[bottom]{footmisc}
+
+
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+
+%%% The \raggedbottom declaration makes all pages the height of the text on that page.
+%%% No extra vertical space is added.
+\raggedbottom
+
+
+
+%%% Definição da linguagem padrão do documento (pacote babel) para
+%%% definir que certas porções do texto (como o resumo, por exemplo)
+%%% estão em uma língua estrangeira, usar as macros
+%%% \foreignlanguage{languageB}{Text in another language}
+%%% ou
+%%% \begin{otherlanguage}{languageB}
+%%% ...
+%%% \end{otherlanguage}
+\selectlanguage{brazil}
+
+\setlength{\abovecaptionskip}{5pt} % espaçamento antes da legenda de tabelas/figuras
+
+
+
+%%% Define que todos os códigos fontes construídos com o ambiente
+%%% `lstlisting' terão uma borda simples.
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve}, 
+  numbers=left,
+  stepnumber=1,    
+  firstnumber=1,
+  numberfirstline=true% string literal style,
+   frame=top,frame=bottom, frame=single,
+   captionpos=t,
+   literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1
+}
+
+
+\newcommand{\ifestex}{\textsf{Ifes$8$}}
+
+\titulo{COMPARAÇÃO DE TÉCNICAS DE REDUÇÃO DE DIMENSIONALIDADE APLICADA NA DETECÇÃO DE ANOMALIAS EM
+POÇOS DE PETRÓLEO}
+\autor{Bruno Kobi Valadares de Amorim}
+\local{Serra}
+\data{2022}
+\orientador[Orientadora:]{Profª.Dra. Kelly Assis de Souza Gazolli}
+\coorientador[Orientador:]{Prof. Dr. Hilário Seibel Júnior}
+
+
+\instituicao{%
+  Instituto Federal do Espírito Santo
+ }
+
+\curso{PROGRAMA DE PÓS-GRADUAÇÃO EM COMPUTAÇÃO APLICADA – PPCOMP}
+\tipotrabalho{Dissertação (Mestrado)}
+\preambulo{Anteprojeto apresentado ao Programa de Pós-Graduação em Computação Aplicada – PPCOMP do Instituto Federal do Espírito Santo, como requisito para aprovação da Disciplina de Pesquisa em Computação Aplicada.} 
+
+
+\begin{document}
+
+\setsecnumformat{\csname the#1\endcsname\space}
+\renewcommand{\afterchapternum}{\hspace{-4pt}}
+
+%%% A macro \pretextual não precisa ser explicitamente chamada porque
+%%% o abntex2 aciona essa macro no início do documento.
+%%% \pretextual
+
+\imprimircapa
+\addtocounter{page}{-1}
+
+\imprimirfolhaderosto*
+
+% A ficha catalográfica será entregue pela Biblioteca
+%\includepdf{pdf/FichaMarcelo.pdf}
+
+
+% ------------------------- Folha de Aprovação ------------------------- 
+% Entregue no dia da defesa 
+%\includepdf{pdf/aprova_marcelo.pdf}
+
+
+%%% ====================================================================
+%%% Ambiente para a escrita da dedicatória.
+%\begin{dedicatoria}
+  %\vspace*{\fill}
+ %\hspace{0.3\textwidth}
+  %\begin{minipage}[t][4cm]{0.8\textwidth} 
+   %\textit{Dedicatória }  \\
+   %\textit{Dedicatória }  \\
+   %\textit{Dedicatória} 
+  %\end{minipage}
+%\end{dedicatoria}
+
+
+%%% ====================================================================
+%%% Agradecimentos
+%\begin{agradecimentos}
+%Agradeço à toda minha família, amigos, professores, e pessoas que ajudaram na realização deste trabalho. Sou imensamente grato pela paciência e incentivo.
+%\end{agradecimentos}
+
+
+%%% ====================================================================
+%%% Epígrafe
+%\begin{epigrafe}
+ % \vspace*{20cm}
+  %\begin{otherlanguage}{english}
+   % \begin{flushright}
+    %%	\textit{epigrafe}
+      %\end{SingleSpace}
+    %\end{flushright}
+  %\end{otherlanguage}
+%\end{epigrafe}
+
+
+%%% ====================================================================
+%%% Ambiente para resumo em português
+%\include{tex/Cap0-resumo}
+
+%%% ====================================================================
+%%% Ambiente para resumo em inglês.
+%\include{tex/Cap0-abstract}
+
+\renewcommand{\afterloftitle}{\null\\[5mm]}
+\renewcommand{\afterlottitle}{\null\\[5mm]}
+\renewcommand{\afterloqtitle}{\null\\[5mm]}
+\renewcommand{\aftertoctitle}{\null\\[5mm]}
+
+
+%%% ====================================================================
+%%% Lista de figuras
+\renewcommand{\listfigurename}{LISTA DE FIGURAS}
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+%%% ====================================================================
+%%% Lista de tabelas
+%\renewcommand{\listtablename}{LISTA DE TABELAS}
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage
+
+
+%%% ====================================================================
+%%% Lista de quadros
+%\pdfbookmark[0]{\listadequadrosname}{loq}
+%\listadequadros*
+%\cleardoublepage
+
+
+%%% ====================================================================
+%%% Lista de abreviaturas
+%\begin{abreviaturas}
+%  \simb{Abrev.} -- Abreviatura
+%  \simb{Assoc.} -- Associação
+%  \simb{Atm.} -- Atmosfera
+%  \simb{Bel.} -- Bacharel
+%  \simb{Bioq.} -- Bioquímica
+%  \simb{Cit.} -- Citação
+%  \simb{Compl.} -- Complemento
+%  \simb{Dic.} -- Dicionário
+%  \simb{Dipl.} -- Diploma
+%\end{abreviaturas}
+
+
+%%% ====================================================================
+%%% Lista de siglas
+%\begin{siglas}
+  %\simb{ABNT} -- Associação Brasileira de Normas Técnicas
+  %\simb{ACM} -- Association for Computing Machinery
+  %\simb{APA} -- American Psychological Association
+  %\simb{BIOS} -- Basic Input / Output System
+  %\simb{CREA} -- Conselho Regional de Engenharia e Agronomia
+  %\simb{IBGE} -- Instituto Brasileiro de Geografia e Estatística
+  %\simb{IEEE} -- Institute of Electrical and Electronics Engineers
+  %\simb{Ifes} -- Instituo Federal de Educação, Ciência e Tecnologia do Espírito Santo
+  %\simb{ISDN} -- Integrated Services Digital Network
+  %\simb{RISC} -- Reduced Instruction Set Computer
+%\end{siglas}
+
+
+%%% ====================================================================
+%%% Lista de símbolos
+%\begin{simbolos}
+ % \simb{$\Gamma$} -- Letra grega Gama
+  %\simb{$\Lambda$} -- Lambda
+  %\simb{$\zeta$} -- Letra grega minúscula zeta
+  %\simb{$\in$} -- Pertence
+  %\simb{$\top$} -- Valor lógico máximo dentro de um reticulado regular booleano ou quasi-booleano.
+%\end{simbolos}
+\cleardoublepage
+
+
+%%% ====================================================================
+%%% Sumário --- Table of Contents
+\renewcommand{\contentsname}{SUMÁRIO}
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+
+% ---
+% ------------------------ Introdução ------------------------
+% ---
+
+\captionsetup{justification=justified,singlelinecheck=false}
+
+\include{tex/Cap1-introducao}
+
+% ---
+% ------------------------ Referencial Teórico ------------------------
+% ---
+
+\include{tex/Cap2-ReferencialTeorico}
+
+% ---
+% ------------------------ Desenvolvimento ------------------------
+% ---
+\include{tex/Cap3-MateriaisMetodos}
+
+\include{tex/Cap4-Cronograma}
+
+%\include{tex/Cap5-materiaisemetodos}
+
+% ---
+% ------------------------ Resultados ------------------------
+% ---
+%\include{tex/Cap4-resultados}
+
+% ----------------------------------------------------------
+% Finaliza a parte no bookmark do PDF
+% para que se inicie o bookmark na raiz
+% e adiciona espaço de parte no Sumário
+% ----------------------------------------------------------
+\phantompart
+
+% ---
+% ------------------------ Conclusão ------------------------
+% ---
+%\include{tex/Cap6-conclusao}
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\renewcommand{\bibname}{REFERÊNCIAS}
+\citeoption{abnt-full-initials=yes}
+
+\bibliography{references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+
+
+%%% Início dos apêndices ---------------------------------------------
+\apendices
+%%% A linha abaixo impede que as seções, subseções, etc. dos apêndices e anexos
+%%% sejam mostradas no Sumário.
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+
+%\renewcommand{\apendicesname}{APÊNDICES}
+%\partapendices*
+
+% --------------------------------------------------------------------
+%\settocpreprocessor{chapter}{}
+%\include{tex/appendices}
+
+
+
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+\phantompart
+
+%---------------------------------------------------------------------
+
+\end{document}
